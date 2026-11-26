@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>ASTRO TECH by CATA TECH · Inventario & POS</title>
+  <title>ASTRO TECH by CATA TECH · Multi-Sede POS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -71,13 +71,10 @@
       justify-content: space-between;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .brand { display: flex; align-items: center; gap: 12px; }
 
     .brand-logo-img {
       width: 54px;
@@ -94,23 +91,37 @@
       margin: 0;
       font-size: 1.05rem;
       font-weight: 800;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.3px;
       line-height: 1.15;
     }
 
     .brand-title p {
       margin: 3px 0 0;
-      font-size: 0.73rem;
+      font-size: 0.72rem;
       color: #cbd5e1;
       font-weight: 500;
+    }
+
+    .header-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+    .sede-select {
+      width: auto;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #ffffff;
+      color: var(--navy-950);
+      border: none;
+      cursor: pointer;
     }
 
     .sync-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(8px);
       padding: 6px 11px;
       border-radius: 999px;
@@ -124,23 +135,13 @@
 
     .sync-pill:active { transform: scale(0.96); }
 
-    .sync-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 8px #4ade80;
-    }
+    .sync-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; }
     .sync-dot.loading { background: #facc15; box-shadow: 0 0 8px #facc15; animation: pulse 1s infinite; }
     .sync-dot.err { background: #f87171; box-shadow: 0 0 8px #f87171; }
 
     @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-    .container {
-      max-width: 1024px;
-      margin: 16px auto;
-      padding: 0 14px;
-    }
+    .container { max-width: 1024px; margin: 16px auto; padding: 0 14px; }
 
     .card {
       background: var(--surface);
@@ -157,6 +158,7 @@
       align-items: center;
       margin-bottom: 14px;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .card-title {
@@ -171,13 +173,13 @@
 
     .form-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 12px;
     }
 
     label {
       display: block;
-      font-size: 0.75rem;
+      font-size: 0.73rem;
       font-weight: 700;
       color: var(--text-sec);
       margin-bottom: 5px;
@@ -192,7 +194,7 @@
       border: 1.5px solid var(--border);
       background: var(--surface-alt);
       color: var(--text-main);
-      font-size: 0.95rem;
+      font-size: 0.93rem;
       font-weight: 500;
       transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
     }
@@ -208,14 +210,14 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px 16px;
+      gap: 6px;
+      padding: 12px 14px;
       border-radius: var(--radius-md);
       border: none;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       font-weight: 700;
       cursor: pointer;
-      transition: transform 0.12s, box-shadow 0.2s, filter 0.2s;
+      transition: transform 0.12s, box-shadow 0.2s;
       width: 100%;
     }
 
@@ -230,8 +232,7 @@
     .btn-camera {
       background: linear-gradient(135deg, #0ea5e9, #2563eb);
       color: #fff;
-      padding: 14px 18px;
-      font-size: 0.98rem;
+      padding: 13px 16px;
       box-shadow: 0 6px 18px rgba(14, 165, 233, 0.32);
     }
 
@@ -247,54 +248,23 @@
       box-shadow: 0 4px 14px rgba(245, 158, 11, 0.28);
     }
 
+    .btn-transfer {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.28);
+    }
+
     .btn-ghost {
       background: #f1f5f9;
       color: var(--text-sec);
       border: 1px solid var(--border);
     }
 
-    .btn-sm {
-      padding: 7px 11px;
-      font-size: 0.8rem;
-      border-radius: 9px;
-      width: auto;
-    }
+    .btn-sm { padding: 7px 11px; font-size: 0.78rem; border-radius: 9px; width: auto; }
 
-    .search-bar {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 10px;
-    }
-
-    .camera-actions {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 8px;
-    }
-
-    #reader {
-      width: 100%;
-      border-radius: 14px;
-      overflow: hidden;
-      margin-top: 12px;
-      border: 2px solid #cbd5e1;
-      background: #0f172a;
-    }
-
-    .product-hero {
-      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-      border: 1.5px solid #cbd5e1;
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 14px;
-    }
-
-    .product-hero-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 10px;
-    }
+    .search-bar { display: flex; gap: 8px; margin-bottom: 10px; }
+    .camera-actions { display: grid; grid-template-columns: 2fr 1fr; gap: 8px; }
+    #reader { width: 100%; border-radius: 14px; overflow: hidden; margin-top: 12px; display: none; border: 2px solid #cbd5e1; background: #0f172a; }
 
     .code-chip {
       display: inline-block;
@@ -307,57 +277,40 @@
       margin-bottom: 5px;
     }
 
-    .product-hero h3 {
-      margin: 0;
-      font-size: 1.12rem;
-      color: var(--navy-950);
+    .dual-stock-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
     }
 
-    .product-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border);
-      font-size: 0.85rem;
-      color: var(--text-sec);
-    }
-
-    .qty-stepper {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .qty-stepper button {
-      width: 44px;
-      height: 44px;
-      border-radius: 11px;
+    .sede-card {
+      background: var(--surface-alt);
       border: 1.5px solid var(--border);
-      background: #f8fafc;
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: var(--navy-900);
-      cursor: pointer;
+      border-radius: 14px;
+      padding: 12px;
     }
 
-    .qty-stepper input {
-      text-align: center;
-      font-size: 1.1rem;
-      font-weight: 800;
-      height: 44px;
+    .sede-card small { display: block; font-size: 0.72rem; font-weight: 700; color: var(--text-sec); text-transform: uppercase; }
+    .sede-card strong { font-size: 1.2rem; font-weight: 800; color: var(--navy-950); display: block; margin-top: 2px; }
+
+    .qty-stepper { display: flex; align-items: center; gap: 8px; }
+    .qty-stepper button {
+      width: 44px; height: 44px; border-radius: 11px;
+      border: 1.5px solid var(--border); background: #f8fafc;
+      font-size: 1.2rem; font-weight: 800; color: var(--navy-900); cursor: pointer;
     }
+    .qty-stepper input { text-align: center; font-size: 1.08rem; font-weight: 800; height: 44px; }
 
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 4px 10px;
+      gap: 4px;
+      padding: 3px 9px;
       border-radius: 999px;
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
     .badge-ok { background: var(--green-bg); color: var(--green-tx); border: 1px solid var(--green-bd); }
     .badge-low { background: var(--amber-bg); color: var(--amber-tx); border: 1px solid var(--amber-bd); }
@@ -398,48 +351,9 @@
       border-bottom: 1px solid var(--border);
     }
     .inv-item:last-child { border-bottom: none; padding-bottom: 2px; }
-
-    .inv-info h4 {
-      margin: 2px 0;
-      font-size: 0.96rem;
-      color: var(--text-main);
-    }
-    .inv-sub {
-      font-size: 0.79rem;
-      color: var(--text-sec);
-    }
-
-    .inv-right {
-      text-align: right;
-      flex-shrink: 0;
-    }
-
-    .stock-num {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--navy-900);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .quick-mini-btns {
-      display: flex;
-      justify-content: flex-end;
-      gap: 5px;
-      margin-top: 6px;
-    }
-
-    .mini-btn {
-      padding: 4px 9px;
-      border-radius: 7px;
-      border: 1px solid var(--border);
-      background: #f8fafc;
-      font-size: 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-    .mini-btn.sell { color: var(--green-tx); border-color: var(--green-bd); background: #f0fdf4; }
-    .mini-btn.add { color: var(--amber-tx); border-color: var(--amber-bd); background: #fffbeb; }
+    .inv-info h4 { margin: 2px 0; font-size: 0.96rem; color: var(--text-main); }
+    .inv-sub { font-size: 0.79rem; color: var(--text-sec); }
+    .inv-right { text-align: right; flex-shrink: 0; }
 
     .kpi-grid {
       display: grid;
@@ -447,9 +361,7 @@
       gap: 11px;
       margin-bottom: 14px;
     }
-    @media (min-width: 680px) {
-      .kpi-grid { grid-template-columns: repeat(4, 1fr); }
-    }
+    @media (min-width: 680px) { .kpi-grid { grid-template-columns: repeat(4, 1fr); } }
 
     .kpi-card {
       background: var(--surface);
@@ -458,20 +370,8 @@
       border: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
     }
-    .kpi-card span {
-      font-size: 0.73rem;
-      font-weight: 700;
-      color: var(--text-sec);
-      text-transform: uppercase;
-      display: block;
-    }
-    .kpi-card strong {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: var(--navy-900);
-      display: block;
-      margin-top: 4px;
-    }
+    .kpi-card span { font-size: 0.72rem; font-weight: 700; color: var(--text-sec); text-transform: uppercase; display: block; }
+    .kpi-card strong { font-size: 1.32rem; font-weight: 800; color: var(--navy-900); display: block; margin-top: 4px; }
     .kpi-card.green strong { color: var(--green-tx); }
     .kpi-card.amber strong { color: var(--amber-tx); }
 
@@ -481,21 +381,13 @@
       gap: 14px;
       margin-bottom: 14px;
     }
-    @media (min-width: 760px) {
-      .charts-grid { grid-template-columns: repeat(2, 1fr); }
-    }
+    @media (min-width: 760px) { .charts-grid { grid-template-columns: repeat(2, 1fr); } }
 
-    .chart-wrap {
-      position: relative;
-      height: 230px;
-      width: 100%;
-    }
+    .chart-wrap { position: relative; height: 220px; width: 100%; }
 
     .bottom-nav {
       position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(12px);
       border-top: 1px solid var(--border);
@@ -505,29 +397,13 @@
       z-index: 50;
       box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.06);
     }
-
     .nav-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      padding: 6px 2px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      cursor: pointer;
-      border-radius: 10px;
+      background: none; border: none; color: var(--text-muted);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      padding: 6px 2px; font-size: 0.72rem; font-weight: 700; cursor: pointer; border-radius: 10px;
     }
-
     .nav-btn svg { width: 21px; height: 21px; }
-
-    .nav-btn.active {
-      color: var(--indigo-600);
-      background: #eff6ff;
-    }
+    .nav-btn.active { color: var(--indigo-600); background: #eff6ff; }
 
     .tab-pane { display: none; animation: fadeIn 0.18s ease; }
     .tab-pane.active { display: block; }
@@ -535,26 +411,16 @@
 
     .toast {
       position: fixed;
-      top: 86px;
-      left: 50%;
+      top: 86px; left: 50%;
       transform: translateX(-50%) translateY(-16px);
-      background: var(--navy-950);
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 0.84rem;
-      font-weight: 600;
+      background: var(--navy-950); color: #fff;
+      padding: 10px 18px; border-radius: 999px;
+      font-size: 0.83rem; font-weight: 600;
       box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s;
-      z-index: 99;
-      white-space: nowrap;
+      opacity: 0; pointer-events: none; transition: all 0.25s; z-index: 99;
+      max-width: 92vw; text-align: center;
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   </style>
 </head>
 <body>
@@ -562,16 +428,23 @@
   <header class="app-header">
     <div class="header-top">
       <div class="brand">
-        <img id="brandLogoImg" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzFlMWI0YiIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjU1JSIgc3RvcC1jb2xvcj0iIzFkNGVkOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwNmI2ZDQiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InJpbmdHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNhODU1ZjciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0b3AtY29sb3I9IiMzOGJkZjgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjk3MzE2Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cG9seWdvbiBwb2ludHM9IjYwLDYgMTA4LDMzIDEwOCw4NyA2MCwxMTQgMTIsODcgMTIsMzMiIGZpbGw9InVybCgjYmdHcmFkKSIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjMuNSIvPgogIDxlbGxpcHNlIGN4PSI2MCIgY3k9IjU0IiByeD0iMzQiIHJ5PSIxMiIgdHJhbnNmb3JtPSJyb3RhdGUoLTE4IDYwIDU0KSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3JpbmdHcmFkKSIgc3Ryb2tlLXdpZHRoPSIzIi8+CiAgPHBhdGggZD0iTTYwIDIyIEw3MiA1MiBMNjAgNDYgTDQ4IDUyIFoiIGZpbGw9IiNmZmZmZmYiLz4KICA8Y2lyY2xlIGN4PSI2MCIgY3k9IjQwIiByPSI1IiBmaWxsPSIjN2MzYWVkIi8+CiAgPHBhdGggZD0iTTUyIDUyIEw0NSA2MiBMNTQgNTggWiIgZmlsbD0iI2Y5NzMxNiIvPgogIDxwYXRoIGQ9Ik02OCA1MiBMNzUgNjIgTDY2IDU4IFoiIGZpbGw9IiNmOTczMTYiLz4KICA8Y2lyY2xlIGN4PSI5MSIgY3k9IjI4IiByPSIyLjUiIGZpbGw9IiNmZGUwNDciLz4KICA8Y2lyY2xlIGN4PSIyOSIgY3k9IjM0IiByPSIyIiBmaWxsPSIjNjdlOGY5Ii8+CiAgPHJlY3QgeD0iMTgiIHk9IjY5IiB3aWR0aD0iODQiIGhlaWdodD0iMjIiIHJ4PSI2IiBmaWxsPSIjMDkxMzI2IiBmaWxsLW9wYWNpdHk9IjAuODIiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICA8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMS41IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjZmZmZmZmIiBsZXR0ZXItc3BhY2luZz0iMC42Ij5BU1RSTyBURUNIPC90ZXh0PgogIDx0ZXh0IHg9IjYwIiB5PSIxMDIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI3LjUiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiNlMGYyZmUiIGxldHRlci1zcGFjaW5nPSIwLjQiPmJ5IENBVEEgVEVDSCDCtyBPS0VZTmV0PC90ZXh0Pgo8L3N2Zz4=" alt="Logo ASTRO TECH by CATA TECH" class="brand-logo-img" />
+        <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cG9seWdvbiBwb2ludHM9IjYwLDYgMTA4LDMzIDEwOCw4NyA2MCwxMTQgMTIsODcgMTIsMzMiIGZpbGw9IiMxZDFiNGIiIHN0cm9rZT0iIzM4YmRmOCIgc3Ryb2tlLXdpZHRoPSI0Ii8+PHRleHQgeD0iNjAiIHk9IjU4IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xlIiBmaWxsPSIjZmZmZmZmIj5BVDwvdGV4dD48dGV4dCB4PSI2MCIgeT0iNzgiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSI4IiBmaWxsPSIjN2QzM2ZjIj5DQVRBIFRFQ0g8L3RleHQ+PC9zdmc+" alt="Logo ASTRO TECH by CATA TECH" class="brand-logo-img" />
         <div class="brand-title">
-          <h1>ASTRO TECH <span style="font-weight:600; color:#7dd3fc;">by CATA TECH</span></h1>
-          <p>Inventario OKEYnet · Nube Sincronizada</p>
+          <h1>ASTRO TECH <span style="color:#7dd3fc;">by CATA TECH</span></h1>
+          <p>Inventario Multi-Sede · OKEYNet · Nube Sincronizada</p>
         </div>
       </div>
-      <button class="sync-pill" onclick="cargarNube()" title="Sincronizar ahora">
-        <span id="syncDot" class="sync-dot loading"></span>
-        <span id="syncText">Sincronizando</span>
-      </button>
+
+      <div class="header-controls">
+        <select id="sedeActiva" class="sede-select" onchange="onCambiarSede()">
+          <option value="ASTRO TECH">📍 Sede: ASTRO TECH</option>
+          <option value="CATA TECH">📍 Sede: CATA TECH</option>
+        </select>
+        <button class="sync-pill" onclick="cargarNube()" title="Sincronizar ahora">
+          <span id="syncDot" class="sync-dot loading"></span>
+          <span id="syncText">Sincronizando</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -579,19 +452,19 @@
 
   <main class="container">
 
-    <!-- PESTAÑA 1: ESCÁNER POS & REGISTRO RÁPIDO -->
+    <!-- PESTAÑA 1: ESCÁNER POS & CONTROL POR SEDE -->
     <section id="tab-scan" class="tab-pane active">
       <div class="card">
         <div class="card-header">
           <h2 class="card-title">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 12h10"/></svg>
-            Escáner de Código de Barras / POS
+            Escáner & Control en Ambas Sedes
           </h2>
           <button class="btn btn-ghost btn-sm" onclick="limpiarBusqueda()">Limpiar</button>
         </div>
 
         <div class="search-bar">
-          <input id="scanCode" type="text" placeholder="Escanea o escribe el código (ej. 750123...)" onkeydown="if(event.key==='Enter') buscarCodigo()" />
+          <input id="scanCode" type="text" placeholder="Escanea o escribe el código de barras..." onkeydown="if(event.key==='Enter') buscarCodigo()" />
           <button class="btn btn-primary" style="width:auto; padding:0 18px;" onclick="buscarCodigo()">Buscar</button>
         </div>
 
@@ -602,30 +475,31 @@
           </button>
           <button class="btn btn-ghost" onclick="detenerCamara()">Apagar Cámara</button>
         </div>
-
-        <div id="reader" style="display:none;"></div>
+        <div id="reader"></div>
       </div>
 
+      <!-- PRODUCTO EXISTENTE: VERIFICACIÓN EN AMBAS SEDES -->
       <div id="boxExistente" class="card" style="display:none;">
-        <div class="product-hero">
-          <div class="product-hero-top">
-            <div>
-              <span id="exCodigoChip" class="code-chip"></span>
-              <h3 id="exNombre"></h3>
-            </div>
-            <div id="exBadge"></div>
+        <span id="exCodigoChip" class="code-chip"></span>
+        <h3 id="exNombre" style="margin:0 0 4px 0; font-size:1.12rem; color:var(--navy-950);"></h3>
+        <p id="exDetalle" style="margin:0; color:var(--text-sec); font-size:0.86rem;"></p>
+
+        <div class="dual-stock-box">
+          <div class="sede-card">
+            <small>STOCK AQUÍ · ASTRO TECH</small>
+            <strong id="stockAstroVal">0 u.</strong>
+            <div id="badgeAstro" style="margin-top:5px;"></div>
           </div>
-          <div class="product-meta">
-            <span>Modelo: <strong id="exModelo">-</strong></span>
-            <span>Categoría: <strong id="exCat">-</strong></span>
-            <span>Precio Venta: <strong id="exPrecio">$0.00</strong></span>
-            <span>Stock Actual: <strong id="exStock" style="font-size:1rem; color:var(--indigo-600);">0</strong></span>
+          <div class="sede-card">
+            <small>STOCK OTRA SEDE · CATA TECH</small>
+            <strong id="stockCataVal">0 u.</strong>
+            <div id="badgeCata" style="margin-top:5px;"></div>
           </div>
         </div>
 
-        <div class="form-grid" style="align-items:end;">
+        <div class="form-grid" style="margin-top:14px; align-items:end;">
           <div>
-            <label>Cantidad a mover</label>
+            <label>Cantidad</label>
             <div class="qty-stepper">
               <button type="button" onclick="cambiarCant(-1)">−</button>
               <input id="exCant" type="number" min="1" value="1" />
@@ -633,30 +507,32 @@
             </div>
           </div>
           <div>
-            <label>Fecha del movimiento</label>
+            <label>Sede de venta / ingreso</label>
+            <select id="movSede">
+              <option value="ASTRO TECH">ASTRO TECH</option>
+              <option value="CATA TECH">CATA TECH</option>
+            </select>
+          </div>
+          <div>
+            <label>Fecha</label>
             <input id="exFecha" type="date" />
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-top:14px;">
-          <button class="btn btn-sell" onclick="registrarMovimiento('VENTA')">
-            ✓ Registrar Venta (−)
-          </button>
-          <button class="btn btn-restock" onclick="registrarMovimiento('ENTRADA')">
-            + Ingresar Stock (+)
-          </button>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:9px; margin-top:14px;">
+          <button class="btn btn-sell" onclick="registrarMovimiento('VENTA')">✓ Venta (−)</button>
+          <button class="btn btn-restock" onclick="registrarMovimiento('ENTRADA')">+ Ingreso (+)</button>
+          <button class="btn btn-transfer" onclick="transferirEntreSedes()">⇄ Traspasar a Sede Activa</button>
         </div>
       </div>
 
+      <!-- PRODUCTO NUEVO CON STOCK INICIAL POR SEDE -->
       <div id="boxNuevo" class="card" style="display:none;">
         <div class="card-header">
-          <h3 class="card-title" style="color:var(--indigo-600);">✨ Registrar Nuevo Producto · ASTRO TECH by CATA TECH</h3>
+          <h3 class="card-title" style="color:var(--indigo-600);">✨ Registrar Producto · ASTRO TECH by CATA TECH</h3>
         </div>
         <div class="form-grid">
-          <div>
-            <label>Código / Barras *</label>
-            <input id="newCodigo" type="text" />
-          </div>
+          <div><label>Código / Barras *</label><input id="newCodigo" type="text" /></div>
           <div>
             <label>Categoría</label>
             <select id="newCategoria">
@@ -666,30 +542,13 @@
               <option value="Servicios">Servicios</option>
             </select>
           </div>
-          <div>
-            <label>Nombre del Producto *</label>
-            <input id="newNombre" type="text" placeholder="Ej: Vidrio Templado 9D" />
-          </div>
-          <div>
-            <label>Modelo Compatible</label>
-            <input id="newModelo" type="text" placeholder="Ej: iPhone 13 / 14" />
-          </div>
-          <div>
-            <label>Precio Compra ($)</label>
-            <input id="newCompra" type="number" step="0.01" min="0" value="0" />
-          </div>
-          <div>
-            <label>Precio Venta ($)</label>
-            <input id="newVenta" type="number" step="0.01" min="0" value="0" />
-          </div>
-          <div>
-            <label>Stock Inicial</label>
-            <input id="newStock" type="number" min="0" value="1" />
-          </div>
-          <div>
-            <label>Stock Mínimo (Alerta)</label>
-            <input id="newMin" type="number" min="0" value="3" />
-          </div>
+          <div><label>Producto *</label><input id="newNombre" type="text" placeholder="Ej: Display / Módulo" /></div>
+          <div><label>Modelo</label><input id="newModelo" type="text" placeholder="Ej: Redmi Note 12" /></div>
+          <div><label>Precio Compra ($)</label><input id="newCompra" type="number" step="0.01" min="0" value="0" /></div>
+          <div><label>Precio Venta ($)</label><input id="newVenta" type="number" step="0.01" min="0" value="0" /></div>
+          <div><label>Stock ASTRO TECH</label><input id="newStockAstro" type="number" min="0" value="1" /></div>
+          <div><label>Stock CATA TECH</label><input id="newStockCata" type="number" min="0" value="0" /></div>
+          <div><label>Stock Mínimo</label><input id="newMin" type="number" min="0" value="2" /></div>
         </div>
         <button class="btn btn-primary" style="margin-top:14px;" onclick="guardarNuevoProducto()">
           Guardar Producto y Sincronizar
@@ -697,61 +556,81 @@
       </div>
     </section>
 
-    <!-- PESTAÑA 2: CATÁLOGO DE INVENTARIO CON SEMÁFORO -->
+    <!-- PESTAÑA 2: INVENTARIO COMPARATIVO -->
     <section id="tab-inv" class="tab-pane">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Catálogo & Alertas de Stock</h2>
+          <h2 class="card-title">Stock Comparado: Astro Tech vs Cata Tech</h2>
           <button class="btn btn-primary btn-sm" onclick="abrirNuevoManual()">+ Nuevo Producto</button>
         </div>
-        <input id="filtroInv" type="text" placeholder="Buscar por producto, modelo o código de barras..." oninput="renderInventario()" />
+        <input id="filtroInv" type="text" placeholder="Buscar producto, modelo o código..." oninput="renderInventario()" />
         <div class="filter-pills">
-          <button class="pill active" onclick="setFiltroEstado('TODOS', this)">Todos</button>
-          <button class="pill" onclick="setFiltroEstado('ALERTAS', this)">🟡🔴 Por Agotarse / Agotados</button>
-          <button class="pill" onclick="setFiltroEstado('Accesorios', this)">Accesorios</button>
-          <button class="pill" onclick="setFiltroEstado('Repuestos', this)">Repuestos</button>
-          <button class="pill" onclick="setFiltroEstado('Insumos Taller', this)">Insumos Taller</button>
+          <button class="pill active" onclick="setFiltroInv('TODOS', this)">Todos</button>
+          <button class="pill" onclick="setFiltroInv('ALERTAS', this)">🟡🔴 Alertas en Alguna Sede</button>
+          <button class="pill" onclick="setFiltroInv('Accesorios', this)">Accesorios</button>
+          <button class="pill" onclick="setFiltroInv('Repuestos', this)">Repuestos</button>
+          <button class="pill" onclick="setFiltroInv('Insumos Taller', this)">Insumos Taller</button>
         </div>
       </div>
-
       <div class="card" id="listaInv"></div>
     </section>
 
-    <!-- PESTAÑA 3: HISTORIAL DIARIO DE VENTAS Y ENTRADAS -->
+    <!-- PESTAÑA 3: MOVIMIENTOS Y CARGA DESDE OTRA SUCURSAL -->
     <section id="tab-mov" class="tab-pane">
       <div class="card">
         <div class="card-header">
-          <h2 class="card-title">Historial Diario de Movimientos</h2>
-          <button class="btn btn-primary btn-sm" onclick="exportarCSV()">⬇ Exportar Excel (CSV)</button>
+          <h2 class="card-title">Subir Registro de la Otra Sucursal</h2>
+        </div>
+        <div class="form-grid">
+          <div>
+            <label>Sucursal del movimiento</label>
+            <select id="bulkSede">
+              <option value="CATA TECH">CATA TECH (Otra sucursal)</option>
+              <option value="ASTRO TECH">ASTRO TECH (Sede principal)</option>
+            </select>
+          </div>
+          <div>
+            <label>Tipo de movimiento</label>
+            <select id="bulkTipo">
+              <option value="ENTRADA">Ingreso de stock (+)</option>
+              <option value="VENTA">Venta realizada (−)</option>
+            </select>
+          </div>
+          <div>
+            <label>Código del producto</label>
+            <input id="bulkCodigo" type="text" placeholder="Ej: 7501234567890" />
+          </div>
+          <div>
+            <label>Cantidad</label>
+            <input id="bulkCant" type="number" min="1" value="1" />
+          </div>
+        </div>
+        <button class="btn btn-primary" style="margin-top:12px;" onclick="subirMovimientoSucursal()">
+          Subir Movimiento y Validar Stock
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">Historial de Movimientos</h2>
+          <button class="btn btn-ghost btn-sm" onclick="exportarCSV()">⬇ Exportar CSV</button>
         </div>
         <div id="listaMov"></div>
       </div>
     </section>
 
-    <!-- PESTAÑA 4: ESTADÍSTICAS & GRÁFICOS -->
+    <!-- PESTAÑA 4: ESTADÍSTICAS & RESUMEN -->
     <section id="tab-stats" class="tab-pane">
       <div class="kpi-grid">
-        <div class="kpi-card green">
-          <span>Ingresos Totales</span>
-          <strong id="kpiIngresos">$0.00</strong>
-        </div>
-        <div class="kpi-card">
-          <span>Unidades Vendidas</span>
-          <strong id="kpiVendidos">0</strong>
-        </div>
-        <div class="kpi-card">
-          <span>Stock Total Disponible</span>
-          <strong id="kpiStock">0</strong>
-        </div>
-        <div class="kpi-card amber">
-          <span>Alertas de Stock</span>
-          <strong id="kpiAlertas">0</strong>
-        </div>
+        <div class="kpi-card green"><span>Ventas Totales ($)</span><strong id="kpiIngresos">$0.00</strong></div>
+        <div class="kpi-card"><span>Stock ASTRO TECH</span><strong id="kpiStockAstro">0</strong></div>
+        <div class="kpi-card"><span>Stock CATA TECH</span><strong id="kpiStockCata">0</strong></div>
+        <div class="kpi-card amber"><span>Alertas en Alguna Sede</span><strong id="kpiAlertas">0</strong></div>
       </div>
 
       <div class="charts-grid">
         <div class="card">
-          <h3 class="card-title" style="margin-bottom:10px;">Ingresos por Día de la Semana ($)</h3>
+          <h3 class="card-title" style="margin-bottom:10px;">Ingresos por Día ($)</h3>
           <div class="chart-wrap"><canvas id="chartDias"></canvas></div>
         </div>
         <div class="card">
@@ -789,7 +668,7 @@
     let movimientos = [];
     let productoActual = null;
     let html5QrCode = null;
-    let filtroEstadoActual = "TODOS";
+    let filtroInvActual = "TODOS";
     let chartDiasInst = null;
     let chartCatInst = null;
 
@@ -805,7 +684,7 @@
       const t = document.getElementById("toast");
       t.textContent = msg;
       t.classList.add("show");
-      setTimeout(() => t.classList.remove("show"), 2600);
+      setTimeout(() => t.classList.remove("show"), 3000);
     }
 
     function setEstadoSync(estado, texto) {
@@ -813,6 +692,12 @@
       const lbl = document.getElementById("syncText");
       dot.className = "sync-dot" + (estado === "loading" ? " loading" : estado === "err" ? " err" : "");
       lbl.textContent = texto;
+    }
+
+    function onCambiarSede() {
+      const sede = document.getElementById("sedeActiva").value;
+      document.getElementById("movSede").value = sede;
+      mostrarToast("Sede activa: " + sede);
     }
 
     function cambiarTab(tab) {
@@ -825,13 +710,13 @@
     }
 
     function guardarLocal() {
-      localStorage.setItem("astro_productos", JSON.stringify(productos));
-      localStorage.setItem("astro_movimientos", JSON.stringify(movimientos));
+      localStorage.setItem("astro_multisite_prods", JSON.stringify(productos));
+      localStorage.setItem("astro_multisite_movs", JSON.stringify(movimientos));
     }
 
     function cargarLocal() {
-      productos = JSON.parse(localStorage.getItem("astro_productos") || "[]");
-      movimientos = JSON.parse(localStorage.getItem("astro_movimientos") || "[]");
+      productos = JSON.parse(localStorage.getItem("astro_multisite_prods") || "[]");
+      movimientos = JSON.parse(localStorage.getItem("astro_multisite_movs") || "[]");
       renderTodo();
     }
 
@@ -849,12 +734,14 @@
             modelo: p.modelo || "",
             precio_compra: Number(p.precio_compra || 0),
             precio_venta: Number(p.precio_venta || 0),
-            stock_inicial: Number(p.stock_inicial || 0),
+            stock_astro: Number(p.stock_astro ?? p.stock_inicial ?? 0),
+            stock_cata: Number(p.stock_cata ?? 0),
             stock_minimo: Number(p.stock_minimo || 0)
           }));
           movimientos = (data.movimientos || []).map(m => ({
             fecha: m.fecha || "",
             dia: m.dia || "",
+            sede: m.sede || "ASTRO TECH",
             codigo: String(m.codigo || "").trim(),
             producto: m.producto || "",
             tipo: m.tipo || "VENTA",
@@ -889,19 +776,6 @@
       }
     }
 
-    function stockActual(codigo) {
-      const p = productos.find(x => x.codigo === codigo);
-      if (!p) return 0;
-      let stock = Number(p.stock_inicial || 0);
-      movimientos.forEach(m => {
-        if (m.codigo === codigo) {
-          if (m.tipo === "ENTRADA") stock += Number(m.cantidad || 0);
-          if (m.tipo === "VENTA") stock -= Number(m.cantidad || 0);
-        }
-      });
-      return stock;
-    }
-
     function badgeEstado(st, min) {
       if (st <= 0) return '<span class="badge badge-out">● AGOTADO</span>';
       if (st <= min * 1.5) return '<span class="badge badge-low">● POR AGOTARSE</span>';
@@ -910,8 +784,7 @@
 
     function cambiarCant(delta) {
       const inp = document.getElementById("exCant");
-      const val = Math.max(1, Number(inp.value || 1) + delta);
-      inp.value = val;
+      inp.value = Math.max(1, Number(inp.value || 1) + delta);
     }
 
     function limpiarBusqueda() {
@@ -936,16 +809,16 @@
       const encontrado = productos.find(p => p.codigo === cod);
       if (encontrado) {
         productoActual = encontrado;
-        const st = stockActual(cod);
         document.getElementById("boxExistente").style.display = "block";
         document.getElementById("boxNuevo").style.display = "none";
         document.getElementById("exCodigoChip").textContent = encontrado.codigo;
         document.getElementById("exNombre").textContent = encontrado.nombre;
-        document.getElementById("exModelo").textContent = encontrado.modelo || "Universal";
-        document.getElementById("exCat").textContent = encontrado.categoria;
-        document.getElementById("exPrecio").textContent = "$" + Number(encontrado.precio_venta || 0).toFixed(2);
-        document.getElementById("exStock").textContent = st + " u.";
-        document.getElementById("exBadge").innerHTML = badgeEstado(st, encontrado.stock_minimo);
+        document.getElementById("exDetalle").textContent = `Modelo: ${encontrado.modelo || "Universal"} · Categoría: ${encontrado.categoria} · Venta: $${Number(encontrado.precio_venta).toFixed(2)}`;
+        document.getElementById("stockAstroVal").textContent = `${encontrado.stock_astro} u.`;
+        document.getElementById("stockCataVal").textContent = `${encontrado.stock_cata} u.`;
+        document.getElementById("badgeAstro").innerHTML = badgeEstado(encontrado.stock_astro, encontrado.stock_minimo);
+        document.getElementById("badgeCata").innerHTML = badgeEstado(encontrado.stock_cata, encontrado.stock_minimo);
+        document.getElementById("movSede").value = document.getElementById("sedeActiva").value;
         document.getElementById("exCant").value = 1;
       } else {
         productoActual = null;
@@ -954,7 +827,7 @@
         document.getElementById("newCodigo").value = cod;
         document.getElementById("newNombre").value = "";
         document.getElementById("newModelo").value = "";
-        mostrarToast("Código nuevo: completa los datos para registrarlo");
+        mostrarToast("Código nuevo: registra su stock en ambas sedes");
       }
     }
 
@@ -966,7 +839,8 @@
         modelo: document.getElementById("newModelo").value.trim(),
         precio_compra: Number(document.getElementById("newCompra").value || 0),
         precio_venta: Number(document.getElementById("newVenta").value || 0),
-        stock_inicial: Number(document.getElementById("newStock").value || 0),
+        stock_astro: Number(document.getElementById("newStockAstro").value || 0),
+        stock_cata: Number(document.getElementById("newStockCata").value || 0),
         stock_minimo: Number(document.getElementById("newMin").value || 0)
       };
       if (!prod.codigo || !prod.nombre) {
@@ -974,7 +848,7 @@
         return;
       }
       if (productos.some(p => p.codigo === prod.codigo)) {
-        mostrarToast("Ese código ya existe en inventario");
+        mostrarToast("Ese código ya existe en el catálogo");
         buscarCodigo(prod.codigo);
         return;
       }
@@ -987,49 +861,145 @@
       buscarCodigo(prod.codigo);
     }
 
+    async function aplicarMovimientoEnSede(prod, tipo, cant, sede, fechaStrOverride) {
+      if (cant <= 0) return false;
+      const stAstro = Number(prod.stock_astro || 0);
+      const stCata = Number(prod.stock_cata || 0);
+
+      if (tipo === "VENTA") {
+        if (sede === "ASTRO TECH" && stAstro < cant) {
+          mostrarToast(`Sin stock en ASTRO TECH (${stAstro} u.). En CATA TECH hay ${stCata} u.`);
+          return false;
+        }
+        if (sede === "CATA TECH" && stCata < cant) {
+          mostrarToast(`Sin stock en CATA TECH (${stCata} u.). En ASTRO TECH hay ${stAstro} u.`);
+          return false;
+        }
+      }
+
+      if (sede === "ASTRO TECH") {
+        prod.stock_astro = tipo === "VENTA" ? stAstro - cant : stAstro + cant;
+      } else {
+        prod.stock_cata = tipo === "VENTA" ? stCata - cant : stCata + cant;
+      }
+
+      const stRestanteSede = sede === "ASTRO TECH" ? prod.stock_astro : prod.stock_cata;
+      const total = tipo === "VENTA"
+        ? cant * Number(prod.precio_venta || 0)
+        : cant * Number(prod.precio_compra || 0);
+
+      const fechaObj = fechaStrOverride ? new Date(fechaStrOverride + "T12:00:00") : new Date();
+      const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+      const mov = {
+        fecha: fechaObj.toLocaleDateString("es-EC"),
+        dia: dias[fechaObj.getDay()],
+        sede,
+        codigo: prod.codigo,
+        producto: prod.nombre,
+        tipo,
+        cantidad: cant,
+        total: Number(total.toFixed(2)),
+        stock_restante: stRestanteSede
+      };
+
+      movimientos.unshift(mov);
+      guardarLocal();
+      renderTodo();
+      await enviarNube({
+        accion: "registrar_movimiento_sede",
+        ...mov,
+        stock_astro: prod.stock_astro,
+        stock_cata: prod.stock_cata
+      });
+      return true;
+    }
+
     async function registrarMovimiento(tipo) {
+      if (!productoActual) return;
+      const cant = Number(document.getElementById("exCant").value || 0);
+      const sede = document.getElementById("movSede").value;
+      const fechaVal = document.getElementById("exFecha").value;
+      const ok = await aplicarMovimientoEnSede(productoActual, tipo, cant, sede, fechaVal);
+      if (ok) {
+        buscarCodigo(productoActual.codigo);
+        mostrarToast(`${tipo} en ${sede}: ${cant} u.`);
+      }
+    }
+
+    async function transferirEntreSedes() {
       if (!productoActual) return;
       const cant = Number(document.getElementById("exCant").value || 0);
       if (cant <= 0) return;
 
-      const fechaInput = document.getElementById("exFecha").value;
-      const fechaObj = fechaInput ? new Date(fechaInput + "T12:00:00") : new Date();
-      const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-      const stAntes = stockActual(productoActual.codigo);
-      const stDespues = tipo === "VENTA" ? stAntes - cant : stAntes + cant;
-      const total = tipo === "VENTA"
-        ? cant * Number(productoActual.precio_venta || 0)
-        : cant * Number(productoActual.precio_compra || 0);
+      const destino = document.getElementById("sedeActiva").value;
+      const origen = destino === "ASTRO TECH" ? "CATA TECH" : "ASTRO TECH";
+      const dispOrigen = origen === "ASTRO TECH" ? productoActual.stock_astro : productoActual.stock_cata;
 
+      if (dispOrigen < cant) {
+        mostrarToast(`No hay ${cant} u. en ${origen} (disponibles: ${dispOrigen} u.)`);
+        return;
+      }
+
+      if (origen === "ASTRO TECH") {
+        productoActual.stock_astro -= cant;
+        productoActual.stock_cata += cant;
+      } else {
+        productoActual.stock_cata -= cant;
+        productoActual.stock_astro += cant;
+      }
+
+      const fechaVal = document.getElementById("exFecha").value;
+      const fechaObj = fechaVal ? new Date(fechaVal + "T12:00:00") : new Date();
+      const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
       const mov = {
         fecha: fechaObj.toLocaleDateString("es-EC"),
         dia: dias[fechaObj.getDay()],
+        sede: `${origen} -> ${destino}`,
         codigo: productoActual.codigo,
         producto: productoActual.nombre,
-        tipo,
+        tipo: "TRASPASO",
         cantidad: cant,
-        total: Number(total.toFixed(2)),
-        stock_restante: stDespues
+        total: 0,
+        stock_restante: destino === "ASTRO TECH" ? productoActual.stock_astro : productoActual.stock_cata
       };
 
       movimientos.unshift(mov);
       guardarLocal();
       renderTodo();
       buscarCodigo(productoActual.codigo);
-      mostrarToast(tipo === "VENTA" ? `Venta registrada (−${cant} u.)` : `Stock agregado (+${cant} u.)`);
-      await enviarNube({ accion: "registrar_movimiento", ...mov });
+      mostrarToast(`Traspaso: ${cant} u. (${origen} → ${destino})`);
+      await enviarNube({
+        accion: "traspaso_sede",
+        ...mov,
+        stock_astro: productoActual.stock_astro,
+        stock_cata: productoActual.stock_cata
+      });
     }
 
-    async function accionRapidaLista(codigo, tipo) {
-      const p = productos.find(x => x.codigo === codigo);
-      if (!p) return;
-      productoActual = p;
-      document.getElementById("exCant").value = 1;
-      await registrarMovimiento(tipo);
+    async function subirMovimientoSucursal() {
+      const sede = document.getElementById("bulkSede").value;
+      const tipo = document.getElementById("bulkTipo").value;
+      const codigo = document.getElementById("bulkCodigo").value.trim();
+      const cant = Number(document.getElementById("bulkCant").value || 0);
+
+      if (!codigo) {
+        mostrarToast("Ingresa el código del producto");
+        return;
+      }
+      const prod = productos.find(p => p.codigo === codigo);
+      if (!prod) {
+        mostrarToast("Código no encontrado en el catálogo");
+        return;
+      }
+      const ok = await aplicarMovimientoEnSede(prod, tipo, cant, sede);
+      if (ok) {
+        document.getElementById("bulkCodigo").value = "";
+        mostrarToast(`Registrado en ${sede}: ${tipo} (${cant} u.)`);
+      }
     }
 
-    function setFiltroEstado(estado, btn) {
-      filtroEstadoActual = estado;
+    function setFiltroInv(filtro, btn) {
+      filtroInvActual = filtro;
       document.querySelectorAll(".pill").forEach(el => el.classList.remove("active"));
       btn.classList.add("active");
       renderInventario();
@@ -1038,59 +1008,53 @@
     function renderInventario() {
       const q = (document.getElementById("filtroInv").value || "").toLowerCase();
       const cont = document.getElementById("listaInv");
-
       const filtrados = productos.filter(p => {
-        const st = stockActual(p.codigo);
         const matchTexto = p.codigo.toLowerCase().includes(q) ||
           p.nombre.toLowerCase().includes(q) ||
           (p.modelo || "").toLowerCase().includes(q);
         if (!matchTexto) return false;
-        if (filtroEstadoActual === "ALERTAS") return st <= p.stock_minimo * 1.5;
-        if (filtroEstadoActual !== "TODOS") return p.categoria === filtroEstadoActual;
+        if (filtroInvActual === "ALERTAS") {
+          return p.stock_astro <= p.stock_minimo * 1.5 || p.stock_cata <= p.stock_minimo * 1.5;
+        }
+        if (filtroInvActual !== "TODOS") return p.categoria === filtroInvActual;
         return true;
       });
 
       if (!filtrados.length) {
-        cont.innerHTML = "<p style='color:var(--text-sec); text-align:center; padding:18px 0;'>No hay productos que coincidan con el filtro.</p>";
+        cont.innerHTML = "<p style='color:var(--text-sec); text-align:center; padding:18px 0;'>No hay productos que coincidan.</p>";
         return;
       }
 
-      cont.innerHTML = filtrados.map(p => {
-        const st = stockActual(p.codigo);
-        return `
-          <div class="inv-item">
-            <div class="inv-info">
-              <span class="code-chip" style="margin-bottom:3px;">${p.codigo}</span>
-              <span style="font-size:0.74rem; color:var(--text-muted); font-weight:600;"> · ${p.categoria}</span>
-              <h4>${p.nombre}</h4>
-              <div class="inv-sub">Modelo: ${p.modelo || "Universal"} · Venta: <strong>$${Number(p.precio_venta).toFixed(2)}</strong></div>
-            </div>
-            <div class="inv-right">
-              <span class="stock-num">${st} u.</span>
-              ${badgeEstado(st, p.stock_minimo)}
-              <div class="quick-mini-btns">
-                <button class="mini-btn sell" onclick="accionRapidaLista('${p.codigo}','VENTA')">−1 Venta</button>
-                <button class="mini-btn add" onclick="accionRapidaLista('${p.codigo}','ENTRADA')">+1 Stock</button>
-              </div>
-            </div>
+      cont.innerHTML = filtrados.map(p => `
+        <div class="inv-item">
+          <div class="inv-info">
+            <span class="code-chip" style="margin-bottom:3px;">${p.codigo}</span>
+            <span style="font-size:0.74rem; color:var(--text-muted); font-weight:600;"> · ${p.categoria}</span>
+            <h4>${p.nombre}</h4>
+            <div class="inv-sub">${p.modelo || "Universal"} · Venta: <strong>$${Number(p.precio_venta).toFixed(2)}</strong></div>
           </div>
-        `;
-      }).join("");
+          <div class="inv-right">
+            <div style="font-size:0.84rem;">ASTRO TECH: <strong>${p.stock_astro} u.</strong> ${badgeEstado(p.stock_astro, p.stock_minimo)}</div>
+            <div style="font-size:0.84rem; margin-top:4px;">CATA TECH: <strong>${p.stock_cata} u.</strong> ${badgeEstado(p.stock_cata, p.stock_minimo)}</div>
+          </div>
+        </div>
+      `).join("");
     }
 
     function renderMovimientos() {
-      const movCont = document.getElementById("listaMov");
+      const cont = document.getElementById("listaMov");
       if (!movimientos.length) {
-        movCont.innerHTML = "<p style='color:var(--text-sec); text-align:center; padding:18px 0;'>Aún no hay ventas ni entradas registradas.</p>";
+        cont.innerHTML = "<p style='color:var(--text-sec); text-align:center; padding:18px 0;'>Sin movimientos registrados aún.</p>";
         return;
       }
-      movCont.innerHTML = movimientos.slice(0, 60).map(m => `
+      cont.innerHTML = movimientos.slice(0, 60).map(m => `
         <div class="inv-item">
           <div class="inv-info">
             <span class="badge ${m.tipo === 'VENTA' ? 'badge-ok' : 'badge-low'}">${m.tipo}</span>
-            <span style="font-size:0.76rem; color:var(--text-muted); font-weight:600;"> · ${m.fecha} (${m.dia})</span>
+            <strong style="font-size:0.78rem; color:var(--indigo-600);"> · ${m.sede}</strong>
+            <span style="font-size:0.75rem; color:var(--text-muted);"> · ${m.fecha} (${m.dia})</span>
             <h4>${m.producto} <small style="color:var(--text-sec);">(${m.codigo})</small></h4>
-            <div class="inv-sub">Cantidad: <strong>${m.cantidad} u.</strong> · Stock restante: <strong>${m.stock_restante} u.</strong></div>
+            <div class="inv-sub">Cant: <strong>${m.cantidad} u.</strong> · Stock tras mov.: <strong>${m.stock_restante} u.</strong></div>
           </div>
           <div class="inv-right">
             <strong style="font-size:1rem; color:var(--navy-900);">$${Number(m.total || 0).toFixed(2)}</strong>
@@ -1100,7 +1064,7 @@
     }
 
     function renderEstadisticas() {
-      let ingresos = 0, vendidos = 0;
+      let ingresos = 0, sAstro = 0, sCata = 0, alertas = 0;
       const diasOrden = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
       const mapDias = { Lunes: 0, Martes: 0, Miércoles: 0, Jueves: 0, Viernes: 0, Sábado: 0, Domingo: 0 };
       const mapCat = { Accesorios: 0, Repuestos: 0, "Insumos Taller": 0, Servicios: 0 };
@@ -1109,7 +1073,6 @@
         if (m.tipo === "VENTA") {
           const tot = Number(m.total || 0);
           ingresos += tot;
-          vendidos += Number(m.cantidad || 0);
           if (mapDias[m.dia] !== undefined) mapDias[m.dia] += tot;
           const prod = productos.find(p => p.codigo === m.codigo);
           const cat = prod ? prod.categoria : "Accesorios";
@@ -1117,16 +1080,15 @@
         }
       });
 
-      let stockTotal = 0, alertas = 0;
       productos.forEach(p => {
-        const st = stockActual(p.codigo);
-        stockTotal += st;
-        if (st <= p.stock_minimo * 1.5) alertas++;
+        sAstro += Number(p.stock_astro || 0);
+        sCata += Number(p.stock_cata || 0);
+        if (p.stock_astro <= p.stock_minimo * 1.5 || p.stock_cata <= p.stock_minimo * 1.5) alertas++;
       });
 
       document.getElementById("kpiIngresos").textContent = "$" + ingresos.toFixed(2);
-      document.getElementById("kpiVendidos").textContent = vendidos;
-      document.getElementById("kpiStock").textContent = stockTotal;
+      document.getElementById("kpiStockAstro").textContent = sAstro;
+      document.getElementById("kpiStockCata").textContent = sCata;
       document.getElementById("kpiAlertas").textContent = alertas;
 
       const ctxDias = document.getElementById("chartDias");
@@ -1181,14 +1143,14 @@
     }
 
     function exportarCSV() {
-      const filas = [["Fecha", "Dia", "Codigo", "Producto", "Tipo", "Cantidad", "Total", "StockRestante"]];
-      movimientos.forEach(m => filas.push([m.fecha, m.dia, m.codigo, m.producto, m.tipo, m.cantidad, m.total, m.stock_restante]));
+      const filas = [["Fecha", "Dia", "Sede", "Codigo", "Producto", "Tipo", "Cantidad", "Total", "StockRestante"]];
+      movimientos.forEach(m => filas.push([m.fecha, m.dia, m.sede, m.codigo, m.producto, m.tipo, m.cantidad, m.total, m.stock_restante]));
       const csv = filas.map(r => r.map(v => `"${String(v ?? "").replace(/"/g, '""')}"`).join(",")).join("\n");
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "ASTRO_TECH_by_CATA_TECH_MOVIMIENTOS.csv";
+      a.download = "ASTRO_TECH_by_CATA_TECH_MULTISEDE.csv";
       a.click();
       URL.revokeObjectURL(url);
     }
